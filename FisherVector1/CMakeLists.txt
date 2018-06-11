@@ -1,0 +1,7 @@
+# CMake 最低版本号要求
+cmake_minimum_required (VERSION 2.4)
+set(INCLUDE_FILE main.cpp getFiles.h gzload.h SampleFea.h)
+# 指定生成目标
+add_executable(demo ${INCLUDE_FILE})
+# link library in static mode
+target_link_libraries(demo libz.a)

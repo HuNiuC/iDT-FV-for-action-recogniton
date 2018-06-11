@@ -1,0 +1,11 @@
+# CMake 最低版本号要求
+cmake_minimum_required (VERSION 2.4)
+set(INCLUDE_FILE main.cpp combine.h fisher.cpp gmm.cpp gmm.h pca.cpp pca.h compute_FV.h feature.cpp feature.h fisher.h getFiles.h gzload.h SelectSample.h train_pca.h)
+# 指定生成目标
+set(INCLUDE_DIRS ./vl ./alglib)
+set(LIBS /home/lixinhui/Select_Sample2/libalg.so /home/lixinhui/Select_Sample2/libvl.so)
+INCLUDE_DIRECTORIES(${INCLUDE_DIRS})
+add_executable(demo2 ${INCLUDE_FILE})
+# link library in static mode
+target_link_libraries(demo2 ${LIBS} libz.a)
+

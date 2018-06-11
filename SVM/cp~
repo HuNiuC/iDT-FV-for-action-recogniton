@@ -1,0 +1,26 @@
+$ find ./data/MCAD_FV3/ID0012 -name "*.features.gz_fv.txt"|xargs -i cp{} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0012 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+
+
+
+
+find /media/SeSaMe_NAS/data/Lixinhui/MCAD_FV2/ID0001 -name "*.features.gz_fv.txt"|xargs -i cp {} /media/SeSaMe_NAS/data/Lixinhui/MCAD_FV2/data_all
+find ./data/MCAD_FV3/ID0003 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0004 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0005 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0007 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0008 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0012 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0013 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0014 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0015 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0016 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0017 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0018 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0019 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0020 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0023 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0026 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0027 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0030 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all
+find ./data/MCAD_FV3/ID0001 -name "*.features.gz_fv.txt"|xargs -i cp {} ./data/MCAD_FV3/fv_all

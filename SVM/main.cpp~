@@ -1,0 +1,87 @@
+#include <iostream>
+#include <stdio.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <string>
+#include <fstream>
+#include "getFiles.h"
+#include <sstream>
+#include <vector>
+using namespace std;
+
+string data_path = "/media/SeSaMe_NAS/data/Lixinhui/MCAD_FV2/data_all/";
+string save_path = "/media/SeSaMe_NAS/data/Lixinhui/MCAD_FV2/SVM/fold3/";
+string list_name = "ID_list.txt";
+//string train_data(save_path+"Cam04_Cam05_Cam06_train_data.txt");
+//string val_data (save_path+"Cam04_Cam05_Cam06_val_data.txt");
+string test_data (save_path+"Cam06_test_data.txt");
+string test_label(save_path+"Cam06_test_label.txt");
+int main()
+{
+       getFiles(data_path.c_str(),list_name);
+       ifstream in_g(list_name.c_str());
+ //      ofstream o_train(train_data.c_str(),std::ofstream::app);
+ //      ofstream o_val(val_data.c_str(),std::ofstream::app);
+       ofstream o_test(test_data.c_str(),std::ofstream::app);
+       ofstream o_label(test_label.c_str(),std::ofstream::app);
+       string line;
+ //      int index_n1 =0;
+ //      int index_n2 =0;
+ //      int index_n3 =0;
+      int label =0;
+       string gallery_set_1="ID0005,ID0007,ID0008,ID0012,ID0015,ID0017,ID0019,ID0020,ID0023,ID0026,ID0030,ID0032";
+       string probe_set_1="ID0001,ID0003,ID0004,ID0013,ID0014,ID0016,ID0018,ID0027";
+       if (in_g)
+       {
+           while(getline(in_g,line))
+           {
+               //to analysis the line for different view / subjuct /action , save test.txt and train.txt
+               string  ID_number = line.substr(0,6);
+               string  view_number = line.substr(9,5);
+               string  action_number = line.substr(16,2);
+
+               string input_fv(data_path+"/"+line);
+               ifstream in_f2(input_fv.c_str());
+               string line2;
+               stringstream ss,str2int;
+               vector<double> feat;
+               double val;
+               if (view_number =="Cam06")
+               {
+                   //if ID_number is in the probe_set ,put it in the test .txt
+                   int flag1 = gallery_set_1.find(ID_number);
+                   int flag2 = probe_set_1.find(ID_number);
+                   if (flag2 != string::npos)
+                   {
+                       getline(in_f2,line2);
+                       ss<<line2;
+                       while(ss>>val)
+                           feat.push_back(val);
+                       int total_fea = feat.size();
+                       str2int<<action_number;
+                       str2int>>label;
+                        o_test << label <<"\t";
+                        o_label << label << endl;
+                       for (int i=0;i<total_fea;i++)
+                           {
+                                o_test<<i+1<<":"<<feat[i]<<"\t";
+                           }
+                       o_test<<endl;
+                       ss.clear();
+                   }
+               }
+               else
+                   cout << "pass !!!!" << endl;
+
+
+}
+}
+       cout << "OK !!"<< endl;
+//       o_train.close();
+//       o_val.close();
+       o_test.close();
+       o_label.close();
+       return 0;
+}

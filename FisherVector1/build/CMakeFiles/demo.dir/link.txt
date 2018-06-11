@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/demo.dir/main.o  -o demo -rdynamic -Wl,-Bstatic -lz -Wl,-Bdynamic 

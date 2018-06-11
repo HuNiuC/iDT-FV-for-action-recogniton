@@ -1,0 +1,1 @@
+/home/lixinhui/Desktop/test_sample2/build/CMakeFiles/demo.dir

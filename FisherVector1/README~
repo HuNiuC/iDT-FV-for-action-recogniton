@@ -1,0 +1,4 @@
+1 cd ./build
+2 $cmake ..
+3 $ make 
+the executable file is in the ./build

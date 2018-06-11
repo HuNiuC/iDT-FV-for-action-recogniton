@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/demo2.dir/main.o CMakeFiles/demo2.dir/fisher.o CMakeFiles/demo2.dir/gmm.o CMakeFiles/demo2.dir/pca.o CMakeFiles/demo2.dir/feature.o  -o demo2  -L/home/lixinhui/Select_Sample2 -rdynamic -lalg -lvl -Wl,-Bstatic -lz -Wl,-Bdynamic -Wl,-rpath,/home/lixinhui/Select_Sample2 

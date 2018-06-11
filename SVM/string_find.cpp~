@@ -1,0 +1,85 @@
+#include <iostream>
+#include <stdio.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <string>
+#include <fstream>
+
+using namespace std;
+string data_path = "/home/lixinhui/data/MCAD_FV/PTZ04/testdat";
+string save_path = "/home/lixinhui/data/MCAD_FV/PTZ04/testsvm/";
+string list_name = "ID_list.txt";
+string train_data(save_path+"train_data.mat");
+string val_data (save_path+"val_data.mat");
+string test_data (save_path+"test_data.mat");
+int main()
+{
+       getFiles(data_path.c_str(),list_name);
+       ifstream in_g(list_name.c_str());
+       ofstream o_train(train_data.c_str(),std::ofstream::app);
+       ofstream o_val(val_data.c_str(),std::ofstream::app);
+       ofstream o_test(test_data.c_str(),std::ofstream::app);
+
+       string line;
+ //      int index_n1 =0;
+ //      int index_n2 =0;
+ //      int index_n3 =0;
+ //      int label =0;
+       string gallery_set_1="ID0005,ID0007,ID0008,ID0012,ID0015,ID0017,ID0019,ID0020,ID0023,ID0026,ID0030,ID0032";
+       string probe_set_1="ID0001,ID0003,ID0004,ID0013,ID0014,ID0016,ID0018,ID0027";
+       if (in_g)
+       {
+           while(getline(in_g,line))
+           {
+               //to analysis the line for different view / subjuct /action , save test.txt and train.txt
+               string  ID_number = line[0:5];
+               string  view_number = line[9:13];
+               string  action_number = line[16:17];
+
+               string input_fv(data_path+"/"+line);
+               istream in_f2(input_fv.c_str());
+               string line2;
+               if (view_number == "Cam04"|"Cam05"|"Cam06")
+               {
+  // if ID_number is in the gallery_set ,than put it in the train.txt
+                   int flag1 = gallery_set_1.find(ID_number);
+                   int flag2 = probe_set_1.find(ID_number);
+                   getline(in_f2,line2);
+                   if (flag1 != string::npos)
+                   {
+                       o_train << action_number <<"\t" << line2 << endl;
+                   }
+                   }
+                   else if (flag2 != string::npos)
+                   {
+                        o_val << action_number <<"\t" << line2 << endl;
+                   }
+                   else
+                       cout << "ID_num is wrong !!!"<< endl;
+  // if ID_number is in the probe_set,than put it in the val.txt
+               }
+               else if (view_number =="PTZ04"|"PTZ06")
+               {
+                   //if ID_number is in the probe_set ,put it in the test .txt
+                   int flag1 = gallery_set_1.find(ID_number);
+                   int flag2 = probe_set_1.find(ID_number);
+                   if (flag2 != string::npos)
+                   {
+                       getline(in_f2,line2);
+                       o_test << action_number <<"\t" << line2 << endl;
+                   }
+               }
+
+               }
+               else
+                   cout << "file_name error!!!!" << endl;
+              cout << "OK !!"<< endl;
+              return 0;
+
+
+
+
+}
+
